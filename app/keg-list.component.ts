@@ -2,11 +2,12 @@ import { Component, EventEmitter } from 'angular2/core';
 import { Keg } from './keg.model';
 import { KegComponent } from './keg.component';
 import { EditKegComponent } from './edit-keg.component';
+import { NewKegComponent } from './new-keg.component';
 
 @Component({
   selector: 'keg-list',
   inputs:['kegList'],
-  directives:[KegComponent, EditKegComponent],
+  directives:[KegComponent, EditKegComponent, NewKegComponent],
 
   template: `
     <div *ngFor="#currentKeg of kegList">
@@ -16,6 +17,8 @@ import { EditKegComponent } from './edit-keg.component';
       <keg-details *ngIf="currentKeg === selectedKeg" [keg]="currentKeg"></keg-details>
     </div>
     <edit-keg *ngIf='selectedKeg' [kegToEdit]='selectedKeg'></edit-keg>
+    <new-keg></new-keg>
+
   `
 })
 

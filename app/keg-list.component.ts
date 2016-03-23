@@ -1,29 +1,35 @@
 import { Component, EventEmitter } from 'angular2/core';
 import { Keg } from './keg.model';
+import { KegComponent } from './keg.component';
 
 @Component({
   selector: 'keg-list',
   inputs:['kegList'],
-
+  directives: [KegComponent],
 
   template: `
     <div *ngFor="#currentKeg of kegList">
       <h3 (click)="kegWasSelected(currentKeg)">
-        {{ selected.brewery }}
+        {{ currentKeg.brewName }}
       </h3>
-      <keg *ngIf"currentKeg === selected" [keg] = "selected"></keg>
+      <keg-details *ngIf="currentKeg === selectedKeg" [keg]="currentKeg"></keg-details>
     </div>
+
 
   `
 })
 
 export class KegListComponent {
   public kegList: Array<Keg>; // Array<Keg> is same as Keg[] type
-  public selected: Keg;
+  public selectedKeg: Keg;
 
   constructor() {}
   kegWasSelected(clickedKeg: Keg): void {
-    this.selected = clickedKeg;
-    console.log(clickedKeg);
+    if(this.selectedKeg === clickedKeg) {
+      this.selectedKeg = undefined;
+    } else {
+      this.selectedKeg = clickedKeg;
+    }
+    console.log(this.selectedKeg);
   }
 }

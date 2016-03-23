@@ -1,9 +1,10 @@
 {
-  "name": "angular2-skeleton-app",
+  "name": "taproom-app",
   "description": "angular2 intro",
   "main": "",
   "authors": [
-    "Brad Pizzimenti <brad@gennakersystems.com>"
+    "Brad Pizzimenti <brad@gennakersystems.com>",
+    "Jordan Meier <jbirdmeier@gmail.com>"
   ],
   "license": "ISC",
   "moduleType": [],

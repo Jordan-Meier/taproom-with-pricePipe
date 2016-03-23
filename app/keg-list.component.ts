@@ -7,11 +7,12 @@ import { Keg } from './keg.model';
 
 
   template: `
-    <h2 *ngFor="#keg of kegList" (click)="kegWasSelected(keg)">
-      if this.selected then <keg-display></keg-display>
-      otherwise
-      {{ keg.brewery }}
-    </h2>
+    <div *ngFor="#currentKeg of kegList">
+      <h3 (click)="kegWasSelected(currentKeg)">
+        {{ selected.brewery }}
+      </h3>
+      <keg *ngIf"currentKeg === selected" [keg] = "selected"></keg>
+    </div>
 
   `
 })

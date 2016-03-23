@@ -10,6 +10,7 @@ import { KegListComponent } from './keg-list.component'
     <h1>Welcome to the Tap Room</h1>
   </div>
   <div class='container'>
+    <h2>Currently on tap:</h2>
     <keg-list [kegList]="kegs"></keg-list>
   </div>
   `

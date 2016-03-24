@@ -3,14 +3,21 @@ import { Keg } from './keg.model';
 import { KegComponent } from './keg.component';
 import { EditKegComponent } from './edit-keg.component';
 import { NewKegComponent } from './new-keg.component';
+import {LevelPipe} from './keg-level.pipe';
 
 @Component({
   selector: 'keg-list',
   inputs:['kegList'],
   directives:[KegComponent, EditKegComponent, NewKegComponent],
-
+  pipes: [LevelPipe],
   template: `
-    <div *ngFor="#currentKeg of kegList">
+    <select (change)="onChange($event.target.value)" class="select">
+      <option value="all">Show All</option>
+      <option value="low">Show low kegs</option>
+      <option value="empty">Show empty kegs</option>
+    </select>
+
+    <div id="keg-list" *ngFor="#currentKeg of kegList | level:filterLevel" >
       <h3 (click)="kegWasSelected(currentKeg)">
         {{ currentKeg.brewName }}
       </h3>
@@ -26,12 +33,15 @@ import { NewKegComponent } from './new-keg.component';
 export class KegListComponent {
   public kegList: Array<Keg>; // Array<Keg> is same as Keg[] type
   public selectedKeg: Keg;
+  public filterLevel: string; "all";
 
+  constructor() {}
 
-  constructor() {
-
-
+  onChange(filterOption) {
+    this.filterLevel = filterOption;
+    console.log(this.filterLevel);
   }
+
   kegWasSelected(clickedKeg: Keg): void {
     if(this.selectedKeg === clickedKeg) {
       this.selectedKeg = undefined;
@@ -47,10 +57,10 @@ export class KegListComponent {
   }
 
   kegWasPoured(clickedKeg: Keg): void {
-    if(this.selectedKeg.pintsRemaining <= 0) {
+    if(clickedKeg.pintsRemaining <= 0) {
       alert("Out of BEER!!!");
     } else {
-      this.selectedKeg.pintsRemaining--;
+      clickedKeg.pintsRemaining--;
     }
     console.log(this.selectedKeg);
   }

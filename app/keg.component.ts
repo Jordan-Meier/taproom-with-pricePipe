@@ -7,8 +7,8 @@ import { Keg } from './keg.model';
   template: `
     <p>Brewery: {{ keg.brewery }}</p>
     <p>Pint Price: {{ keg.pintPrice }}</p>
-    <p>Pints Remaining:{{ keg.pintsRemaining }}</p>
-    <p>Alcohol %{{ keg.alcPercent }}</p>
+    <p>Pints Remaining: {{ keg.pintsRemaining }}</p>
+    <p>Alcohol Percentage: {{ keg.alcPercent }}%</p>
   `
 })
 export class KegComponent {

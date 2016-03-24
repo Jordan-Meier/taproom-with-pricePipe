@@ -14,6 +14,7 @@ import { NewKegComponent } from './new-keg.component';
       <h3 (click)="kegWasSelected(currentKeg)">
         {{ currentKeg.brewName }}
       </h3>
+      <button (click)="kegWasPoured(currentKeg)">Pour</button>
       <keg-details *ngIf="currentKeg === selectedKeg" [keg]="currentKeg"></keg-details>
     </div>
     <edit-keg *ngIf='selectedKeg' [kegToEdit]='selectedKeg'></edit-keg>
@@ -43,5 +44,14 @@ export class KegListComponent {
   createKeg(kegArray:string[]): void {
     var newKeg: Keg = new Keg(kegArray[0], kegArray[1], this.kegList.length, kegArray[2]);
     this.kegList.push(newKeg);
+  }
+
+  kegWasPoured(clickedKeg: Keg): void {
+    if(this.selectedKeg.pintsRemaining <= 0) {
+      alert("Out of BEER!!!");
+    } else {
+      this.selectedKeg.pintsRemaining--;
+    }
+    console.log(this.selectedKeg);
   }
 }

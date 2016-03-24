@@ -17,7 +17,7 @@ import { NewKegComponent } from './new-keg.component';
       <keg-details *ngIf="currentKeg === selectedKeg" [keg]="currentKeg"></keg-details>
     </div>
     <edit-keg *ngIf='selectedKeg' [kegToEdit]='selectedKeg'></edit-keg>
-    <new-keg></new-keg>
+    <new-keg (onSubmitNewKeg)="createKeg($event)"></new-keg>
 
   `
 })
@@ -25,6 +25,7 @@ import { NewKegComponent } from './new-keg.component';
 export class KegListComponent {
   public kegList: Array<Keg>; // Array<Keg> is same as Keg[] type
   public selectedKeg: Keg;
+
 
   constructor() {
 
@@ -37,5 +38,10 @@ export class KegListComponent {
       this.selectedKeg = clickedKeg;
     }
     console.log(this.selectedKeg);
+  }
+
+  createKeg(kegArray:string[]): void {
+    var newKeg: Keg = new Keg(kegArray[0], kegArray[1], this.kegList.length, kegArray[2]);
+    this.kegList.push(newKeg);
   }
 }

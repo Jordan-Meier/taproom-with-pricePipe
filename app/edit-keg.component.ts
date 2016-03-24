@@ -11,6 +11,7 @@ import {Keg} from './keg.model';
     <input [(ngModel)]="kegToEdit.brewName" class="col-sm-8 input-lg keg-form"/>
     <input [(ngModel)]="kegToEdit.pintPrice" class="col-sm-8 input-lg keg-form"/>
     <input [(ngModel)]="kegToEdit.pintsRemaining" class="col-sm-8 input-lg keg-form"/>
+    <input [(ngModel)]="kegToEdit.alcPercent" class="col-sm-8 input-lg keg-form"/>
   </div>
   `
 })

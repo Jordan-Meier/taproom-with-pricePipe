@@ -9,7 +9,7 @@ import {Keg} from './keg.model';
       <h3>Tap a Keg:</h3>
       <input placeholder="Brew Name" class="form-control" #newBrewName>
       <input placeholder="Brewery" class="form-control" #newBrewery>
-      <input placeholder="Alcohol Percent" class="form-control" #newAlcPercent>
+      <input type="number" placeholder="Alcohol Percent" class="form-control" #newAlcPercent>
       <button (click)="addKeg(newBrewName, newBrewery, newAlcPercent)" class="btn-success btn-lg add-button">Add</button>
     </div>
   `
@@ -17,13 +17,13 @@ import {Keg} from './keg.model';
 
 
 export class NewKegComponent {
-  public onSubmitNewKeg: EventEmitter<string[]>;
+  public onSubmitNewKeg: EventEmitter<any[]>;
   constructor() {
     this.onSubmitNewKeg = new EventEmitter();
   }
   addKeg(userBrewName: HTMLInputElement, userBrewery: HTMLInputElement, userAlcPercent: HTMLInputElement) {
     console.log(userBrewName);
-    var kegArray: string[] = [userBrewery.value, userBrewName.value, userAlcPercent.value];
+    var kegArray: any[] = [userBrewery.value, userBrewName.value, userAlcPercent.value];
   this.onSubmitNewKeg.emit(kegArray);
     userBrewName.value = "";
     userBrewery.value = "";

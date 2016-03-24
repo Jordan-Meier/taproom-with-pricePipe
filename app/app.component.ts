@@ -20,9 +20,9 @@ export class AppComponent {
   public kegs: Keg[];
   constructor() {
     this.kegs = [
-      new Keg("Deschuttes", "Angular Stout", 0, 7),
-      new Keg("Bridgeport", "IPA", 1, 8),
-      new Keg("2Towns", "Bad Apple", 2, 6),
+      new Keg(4, "Deschuttes", "Angular Stout", 0, 7),
+      new Keg(5, "Bridgeport", "IPA", 1, 8),
+      new Keg(6, "2Towns", "Bad Apple", 2, 6),
     ];
     console.log(this.kegs[0]);
   }

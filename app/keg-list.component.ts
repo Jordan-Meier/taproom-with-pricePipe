@@ -19,7 +19,8 @@ import {LevelPipe} from './keg-level.pipe';
 
     <div id="keg-list" *ngFor="#currentKeg of kegList | level:filterLevel"
     [class.red]= "currentKeg.alcPercent > 6"
-    [class.green]= "currentKeg.alcPercent <= 6">
+    [class.green]= "currentKeg.alcPercent <= 6"
+    [class.boxed]= "currentKeg.pintPrice < 5">
       <h3 (click)="kegWasSelected(currentKeg)">
         {{ currentKeg.brewName }}
       </h3>
@@ -54,7 +55,7 @@ export class KegListComponent {
   }
 
   createKeg(kegArray:any[]): void {
-    var newKeg: Keg = new Keg(kegArray[0], kegArray[1], this.kegList.length, kegArray[2]);
+    var newKeg: Keg = new Keg(kegArray[0], kegArray[1], kegArray[2], this.kegList.length, kegArray[3]);
     this.kegList.push(newKeg);
   }
 

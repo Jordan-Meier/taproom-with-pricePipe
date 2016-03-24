@@ -5,10 +5,12 @@ import { Keg } from './keg.model';
     selector: 'keg-details',
     inputs: ['keg'],
   template: `
-    <p>Brewery: {{ keg.brewery }}</p>
-    <p>Pint Price: $ {{ keg.pintPrice }}.00</p>
-    <p>Pints Remaining: {{ keg.pintsRemaining }}</p>
-    <p>Alcohol Percentage: {{ keg.alcPercent }}%</p>
+    <div class="keg-info">
+      <p>Brewery: {{ keg.brewery }}</p>
+      <p>Pint Price: $ {{ keg.pintPrice }}.00</p>
+      <p>Pints Remaining: {{ keg.pintsRemaining }}</p>
+      <p>Alcohol Percentage: {{ keg.alcPercent }}%</p>
+    </div>  
   `
 })
 export class KegComponent {

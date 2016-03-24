@@ -11,6 +11,7 @@ import { KegListComponent } from './keg-list.component'
   </div>
   <div class='container'>
     <h2>Currently on tap:</h2>
+    <h4>Beverages in red have an ABV greater than 6</h4>
     <keg-list [kegList]="kegs"></keg-list>
   </div>
   `
